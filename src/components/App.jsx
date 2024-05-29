@@ -1,9 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, lazy } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+import { useAuth } from 'hooks';
+
+import css from './App.module.css';
+
 import { ContactForm } from './ContactForm/ContactForm';
 import { SearchBar } from './SearchBar/SearchBar';
 import ContactsList from './ContactList/ContactsList';
-import css from './App.module.css';
-import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchContacts,
   addContact,
