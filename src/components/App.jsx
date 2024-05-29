@@ -4,14 +4,18 @@ import { SearchBar } from './SearchBar/SearchBar';
 import ContactsList from './ContactList/ContactsList';
 import css from './App.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts, addContact, deleteContact } from '../redux/operations';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+} from '../redux/contacts/operations';
 import {
   getContacts,
   getFilter,
   getIsLoading,
   getError,
-} from '../redux/selectors';
-import { setFilter } from '../redux/contactsSlice';
+} from '../redux/contacts/selectors';
+import { setFilter } from '../redux/contacts/contactsSlice';
 
 export const App = () => {
   const dispatch = useDispatch();
