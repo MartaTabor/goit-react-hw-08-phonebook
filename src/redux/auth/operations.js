@@ -53,7 +53,7 @@ export const refreshUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-      return thunkAPI.rejectWithValue('Unable to fetch user');
+      return thunkAPI.rejectWithValue('Please log in to see your contacts!');
     }
 
     try {
