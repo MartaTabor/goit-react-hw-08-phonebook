@@ -3,22 +3,21 @@ import css from './ContactForm.module.css';
 
 export const ContactForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
-  const handleChange = event => {
-    const { name, value } = event.target;
-    if (name === 'name') {
-      setName(value);
-    } else if (name === 'phone') {
-      setPhone(value);
-    }
+  const handleNameChange = e => {
+    setName(e.target.value);
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    onSubmit(name, phone);
+  const handlePhoneChange = e => {
+    setNumber(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    onSubmit({ name, number });
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -32,21 +31,21 @@ export const ContactForm = ({ onSubmit }) => {
         type="text"
         name="name"
         value={name}
-        onChange={handleChange}
+        onChange={handleNameChange}
         placeholder="Name"
         pattern="^[a-zA-Zа-яА-Я]+(([' \\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         required
       />
-      <label className={css.label} htmlFor="phoneField">
+      <label className={css.label} htmlFor="number">
         Number
       </label>
       <input
         className={css.input}
-        id="phoneField"
+        id="number"
         type="tel"
-        name="phone"
-        value={phone}
-        onChange={handleChange}
+        name="number"
+        value={number}
+        onChange={handlePhoneChange}
         placeholder="Phone Number"
         pattern="\+?\d{1,4}?[ .\\-\\s]?\(?\d{1,3}?\)?[ .\\-\\s]?\d{1,4}[ .\\-\\s]?\d{1,4}[ .\\-\\s]?\d{1,9}"
         required

@@ -1,19 +1,37 @@
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useDispatch, useSelector } from 'react-redux';
-import { getIsLoading } from '../redux/contacts/selectors';
+import {
+  getContacts,
+  getFilter,
+  getIsLoading,
+} from '../redux/contacts/selectors';
 import { ContactsList } from '../components/ContactList/ContactsList';
 import { ContactForm } from '../components/ContactForm/ContactForm';
 import { SearchBar } from '../components/SearchBar/SearchBar';
-import { fetchContacts } from '../redux/contacts/operations';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+} from '../redux/contacts/operations';
 import { useEffect } from 'react';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+
+  const handleSubmit = contactData => {
+    dispatch(addContact(contactData));
+  };
+
+  const handleDelete = id => {
+    dispatch(deleteContact(id));
+  };
 
   return (
     <HelmetProvider>
@@ -21,10 +39,14 @@ const ContactsPage = () => {
         <Helmet>
           <title>Your Contacts</title>
         </Helmet>
-        <ContactForm />
+        <ContactForm onSubmit={handleSubmit} />
         <SearchBar />
         <div>{isLoading && 'Request in progress...'}</div>
-        <ContactsList />
+        <ContactsList
+          contacts={contacts}
+          filter={filter}
+          onDelete={handleDelete}
+        />
       </div>
     </HelmetProvider>
   );
