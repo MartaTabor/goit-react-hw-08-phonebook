@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import css from './ContactsList.module.css';
 
-const ContactsList = ({ contacts, filter, onDelete }) => {
+export const ContactsList = ({ contacts, filter, onDelete }) => {
   const filteredContacts = contacts.filter(contact =>
     contact.name?.toLowerCase().includes(filter.toLowerCase())
   );
@@ -46,5 +46,3 @@ ContactsList.propTypes = {
   filter: PropTypes.string.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
-
-export default ContactsList;

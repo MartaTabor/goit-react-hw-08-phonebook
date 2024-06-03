@@ -1,13 +1,13 @@
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useDispatch, useSelector } from 'react-redux';
-import { getIsLoading } from 'redux/contacts/selectors';
+import { getIsLoading } from '../redux/contacts/selectors';
 import { ContactsList } from '../components/ContactList/ContactsList';
 import { ContactForm } from '../components/ContactForm/ContactForm';
 import { SearchBar } from '../components/SearchBar/SearchBar';
-import { fetchContacts } from 'redux/contacts/operations';
+import { fetchContacts } from '../redux/contacts/operations';
 import { useEffect } from 'react';
 
-export const Contacts = () => {
+const ContactsPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
 
@@ -16,14 +16,18 @@ export const Contacts = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <Helmet>
-        <title>Your Contacts</title>
-      </Helmet>
-      <ContactForm />
-      <SearchBar />
-      <div>{isLoading && 'Request in progress...'}</div>
-      <ContactsList />
-    </div>
+    <HelmetProvider>
+      <div>
+        <Helmet>
+          <title>Your Contacts</title>
+        </Helmet>
+        <ContactForm />
+        <SearchBar />
+        <div>{isLoading && 'Request in progress...'}</div>
+        <ContactsList />
+      </div>
+    </HelmetProvider>
   );
 };
+
+export default ContactsPage;
