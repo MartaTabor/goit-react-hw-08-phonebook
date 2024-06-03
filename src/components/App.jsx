@@ -1,64 +1,55 @@
 import { useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+import { Layout } from './Layout';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
+import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
 
 import css from './App.module.css';
 
-import { ContactForm } from './ContactForm/ContactForm';
-import { SearchBar } from './SearchBar/SearchBar';
-import ContactsList from './ContactList/ContactsList';
-import {
-  fetchContacts,
-  addContact,
-  deleteContact,
-} from '../redux/contacts/operations';
-import {
-  getContacts,
-  getFilter,
-  getIsLoading,
-  getError,
-} from '../redux/contacts/selectors';
-import { setFilter } from '../redux/contacts/contactsSlice';
+const Home = lazy(() => import('../pages/Home'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage'));
+const ContactsPage = lazy(() => import('../pages/ContactsPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  const handleFilterChange = event => {
-    dispatch(setFilter(event.target.value));
-  };
-
-  const handleAddContact = (name, phone) => {
-    dispatch(addContact({ name, phone }));
-  };
-
-  const handleDeleteContact = id => {
-    dispatch(deleteContact(id));
-  };
-
-  return (
-    <div className={css.container}>
-      <h1 className={css.heading}>Phonebook</h1>
-      <ContactForm onSubmit={handleAddContact} />
-      <SearchBar filter={filter} onFilterChange={handleFilterChange} />
-      <h2 className={css.heading}>Contacts</h2>
-      {isLoading && !error && <b>Request in progress...</b>}
-      {error && <p className={css.error}>{error}</p>}
-      <ContactsList
-        contacts={contacts}
-        filter={filter}
-        onDelete={handleDeleteContact}
-      />
-    </div>
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+      </Route>
+    </Routes>
   );
 };
