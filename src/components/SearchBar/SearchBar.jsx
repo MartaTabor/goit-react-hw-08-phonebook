@@ -1,6 +1,14 @@
 import css from './SearchBar.module.css';
+import { useDispatch } from 'react-redux';
+import { setFilter } from '../../redux/contacts/contactsSlice';
 
-export const SearchBar = ({ filter, onFilterChange }) => {
+export const SearchBar = () => {
+  const dispatch = useDispatch();
+
+  const handleSearch = e => {
+    dispatch(setFilter(e.target.value));
+  };
+
   return (
     <div className={css.search}>
       <label className={css.label} htmlFor="searchField">
@@ -11,8 +19,7 @@ export const SearchBar = ({ filter, onFilterChange }) => {
         id="searchField"
         type="text"
         name="filter"
-        value={filter}
-        onChange={onFilterChange}
+        onChange={handleSearch}
         placeholder="Search by name"
       />
     </div>
