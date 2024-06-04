@@ -46,7 +46,7 @@ export const RegisterForm = () => {
           </button>
           <p>
             Clicking <strong>create account</strong> means that you are agree to
-            our <a href="#">terms of services</a>.
+            our <a href="!#">terms of services</a>.
           </p>
           <hr />
         </form>

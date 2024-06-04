@@ -36,7 +36,7 @@ export const LoginForm = () => {
             Log In
           </button>
           <p>
-            <a href="#">Forgotten account</a>
+            <a href="!#">Forgotten account</a>
           </p>
           <hr />
         </form>
