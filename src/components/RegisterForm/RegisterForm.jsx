@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/operations';
+import css from './RegisterForm.module.css';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -18,25 +19,38 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
-      <label>
-        Username
-        <input type="test" name="name" placeholder="Name" required />
-      </label>
-      <label>
-        Email
-        <input type="email" name="email" placeholder="email" required />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          required
-        />
-      </label>
-      <button type="submit">Register</button>
-    </form>
+    <div className={css.formModal}>
+      <div className={css.signupForm}>
+        <form onSubmit={handleSubmit} autoComplete="off">
+          <h2 className={css.heading}>Please Register</h2>
+          <input
+            type="test"
+            name="name"
+            placeholder="Choose Username"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Create password"
+            required
+          />
+          <button className={`${css.btn} ${css.signup}`} type="submit">
+            Create Account
+          </button>
+          <p>
+            Clicking <strong>create account</strong> means that you are agree to
+            our <a href="#">terms of services</a>.
+          </p>
+          <hr />
+        </form>
+      </div>
+    </div>
   );
 };
