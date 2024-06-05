@@ -11,7 +11,7 @@ export const SearchBar = () => {
 
   return (
     <div className={css.search}>
-      <h3>Find Contact by Name</h3>
+      <h3>Find Contact</h3>
       <input
         className={css.input}
         id="searchField"

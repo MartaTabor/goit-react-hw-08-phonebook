@@ -13,12 +13,12 @@
   width: 100%;
   top: 0;
   z-index: 1000;
+  overflow: hidden;
 }
 
 .header a {
   text-decoration: none;
   color: black;
-  font-size: 20px;
   padding: 5px 5px 10px 5px;
   cursor: pointer;
   border-radius: 0.5rem;
