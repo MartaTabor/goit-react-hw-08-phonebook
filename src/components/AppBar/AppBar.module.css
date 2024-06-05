@@ -1,9 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Quicksand');
+
 .header {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'quicksand', Arial, Helvetica, sans-serif;
   margin-bottom: 0;
   padding: 10px 50px;
   display: flex;

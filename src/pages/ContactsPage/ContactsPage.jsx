@@ -14,6 +14,7 @@ import {
   deleteContact,
 } from '../../redux/contacts/operations';
 import { useEffect } from 'react';
+import css from './ContacsPage.module.css';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -41,7 +42,9 @@ const ContactsPage = () => {
         </Helmet>
         <ContactForm onSubmit={handleSubmit} />
         <SearchBar />
-        <div>{isLoading && 'Request in progress...'}</div>
+        <div className={css.container}>
+          {isLoading && <span className={css.loader}></span>}
+        </div>
         <ContactsList
           contacts={contacts}
           filter={filter}
