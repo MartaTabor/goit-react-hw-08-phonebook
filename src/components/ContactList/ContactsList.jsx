@@ -12,14 +12,14 @@ export const ContactsList = ({ onDelete }) => {
   );
 
   return (
-    <div>
+    <div className={css.container}>
       {filteredContacts.length > 0 ? (
         <table className={css.table}>
-          <thead>
-            <tr className={css.theading}>
+          <thead className={css.theading}>
+            <tr>
               <th>Name</th>
               <th>Phone Number</th>
-              <th className={css.delete}>Delete</th>
+              <th>Remove Contact</th>
             </tr>
           </thead>
           <tbody>

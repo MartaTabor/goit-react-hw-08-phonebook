@@ -22,9 +22,7 @@ export const ContactForm = ({ onSubmit }) => {
 
   return (
     <form className={css.form} onSubmit={handleSubmit}>
-      <label className={css.label} htmlFor="nameField">
-        Name
-      </label>
+      <h3>Add Contact</h3>
       <input
         className={css.input}
         id="nameField"
@@ -36,9 +34,6 @@ export const ContactForm = ({ onSubmit }) => {
         pattern="^[a-zA-Zа-яА-Я]+(([' \\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         required
       />
-      <label className={css.label} htmlFor="number">
-        Number
-      </label>
       <input
         className={css.input}
         id="number"

@@ -4,15 +4,15 @@ import {
   getContacts,
   getFilter,
   getIsLoading,
-} from '../redux/contacts/selectors';
-import { ContactsList } from '../components/ContactList/ContactsList';
-import { ContactForm } from '../components/ContactForm/ContactForm';
-import { SearchBar } from '../components/SearchBar/SearchBar';
+} from '../../redux/contacts/selectors';
+import { ContactsList } from '../../components/ContactList/ContactsList';
+import { ContactForm } from '../../components/ContactForm/ContactForm';
+import { SearchBar } from '../../components/SearchBar/SearchBar';
 import {
   fetchContacts,
   addContact,
   deleteContact,
-} from '../redux/contacts/operations';
+} from '../../redux/contacts/operations';
 import { useEffect } from 'react';
 
 const ContactsPage = () => {
