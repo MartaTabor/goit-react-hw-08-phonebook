@@ -40,7 +40,7 @@ export const ContactsList = ({ onDelete }) => {
           </tbody>
         </table>
       ) : (
-        <p className={css.text}>No contacts</p>
+        <p className={css.text}>No contacts found</p>
       )}
     </div>
   );

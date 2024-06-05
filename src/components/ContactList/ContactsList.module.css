@@ -75,36 +75,12 @@ tbody {
   }
 }
 
-/* .table {
-  padding: 0;
-  margin: 25px auto;
-  width: 700px;
-}
-
-.theading {
-  text-align: left;
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-.delete {
-  display: none;
-}
-
-.tbody {
-  height: 50px;
-}
-
-.name {
-  text-transform: capitalize;
-  font-weight: 500;
-}
-
 .text {
-  font-size: 20px;
-} */
+  text-align: center;
+  font-size: 35px;
+  font-weight: 700;
+  margin: 0;
+}
 
 .button {
   width: 100px;

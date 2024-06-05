@@ -14,10 +14,22 @@
 }
 
 .input {
+  width: 100%;
+  font-size: 1em;
+  padding: 1.2em 1.7em 1.2em 1.7em;
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
   border-radius: 20px;
-  height: 25px;
-  opacity: 40%;
-  padding: 5px;
+  border: none;
+  background: rgb(255, 255, 255, 0.5);
+  outline: none;
+  font-weight: bold;
+  transition: 0.4s;
+}
+
+.input:focus,
+.input:active {
+  transform: scaleX(1.02);
 }
 
 .button {

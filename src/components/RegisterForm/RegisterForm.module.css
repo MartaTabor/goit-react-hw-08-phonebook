@@ -56,20 +56,13 @@ body {
   margin-top: 0.5em;
 }
 
-.formModal .login,
 .formModal .signup {
   background: #57b846;
   color: #fff;
 }
 
-.formModal .login:hover,
 .formModal .signup:hover {
   background: #222;
-}
-
-.loginToggle {
-  background: #57b846;
-  color: #ffff;
 }
 
 .formModal form {
@@ -80,7 +73,6 @@ body {
   transform: translateX(-50%);
 }
 
-.loginForm,
 .signupForm {
   position: relative;
   width: 100%;
@@ -88,7 +80,6 @@ body {
   padding-bottom: 1em;
 }
 
-.loginForm button,
 .signupForm button {
   width: 100%;
   margin-top: 0.5em;
