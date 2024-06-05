@@ -3,7 +3,7 @@
 .header {
   font-family: 'quicksand', Arial, Helvetica, sans-serif;
   margin-bottom: 0;
-  padding: 10px 50px;
+  padding: 10px 0 10px 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
